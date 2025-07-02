@@ -1,0 +1,248 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products</title>
+    <style>
+        /* General Styles */
+        body {
+            background-color: #121212;
+            color: #F7F200;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8rem;
+            padding: 30px 0;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Product Container */
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1200px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background-color: #1E1E1E;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Product Image */
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Product Info */
+        .product-name {
+            font-size: 1.6rem;
+            margin: 10px 0;
+            color: #F7F200;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        /* Quantity Controls */
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .quantity-display {
+            font-size: 1.3rem;
+            color: #F7F200;
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
+            border: 2px solid #F7F200;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .quantity-btn {
+            background-color: #F7F200;
+            color: #121212;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background-color: #FFD700;
+            transform: scale(1.1);
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: #F7F200;
+            color: #121212;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #FFD700;
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Floating Buttons */
+        .floating-btn {
+            position: fixed;
+            top: 20px;
+            background-color: #F7F200;
+            color: #121212;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            background-color: #FFD700;
+            transform: scale(1.1);
+        }
+
+        .view-cart-btn {
+            right: 160px;
+            top: 20px;
+        }
+
+        .checkout-btn {
+            right: 20px;
+            top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Our Products</h1>
+    
+    <div class="product-container">
+        {% for product in products %}
+        <div class="product-card">
+            <img class="product-image" src="{% static product.image %}" alt="{{ product.name }}">
+            <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-price">{{ product.price }} USD</p>
+
+            <p class="product-stock">Stock: {{ product.quantity }} available</p>
+    
+            <div class="quantity-controls" data-product-id="{{ product.id }}" data-stock="{{ product.quantity }}">
+                <button class="quantity-btn decrease">-</button>
+                <div class="quantity-display" data-quantity="1">1</div>
+                <button class="quantity-btn increase">+</button>
+            </div>
+            
+            <div class="btn-container">
+                <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="quantity" id="hidden-quantity-{{ product.id }}" value="1">
+                    <button type="submit" class="btn">Add to Cart</button>
+                </form>
+                <a href="{% url 'store:product_detail' product.id %}" class="btn">View Details</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <a href="{% url 'cart:view_cart' %}" class="floating-btn view-cart-btn">View Cart</a>
+    <a href="{% url 'cart:checkout' %}" class="floating-btn checkout-btn">Checkout</a>
+    
+    <script>
+        document.querySelectorAll('.quantity-controls').forEach(control => {
+            const productId = control.getAttribute('data-product-id');
+            const quantityDisplay = control.querySelector('.quantity-display');
+            const hiddenInput = document.getElementById(`hidden-quantity-${productId}`);
+            const productStock = parseInt(control.getAttribute('data-stock'));  // Get product stock here
+        
+            control.querySelector('.increase').addEventListener('click', () => updateQuantity('increase', quantityDisplay, hiddenInput, productStock));
+            control.querySelector('.decrease').addEventListener('click', () => updateQuantity('decrease', quantityDisplay, hiddenInput, productStock));
+        });
+        
+        function updateQuantity(action, quantityDisplay, hiddenInput, productStock) {
+            let currentQuantity = parseInt(quantityDisplay.getAttribute('data-quantity'));
+        
+            if (action === 'increase' && currentQuantity < productStock) {
+                currentQuantity++;
+            } else if (action === 'decrease' && currentQuantity > 1) {
+                currentQuantity--;
+            }
+        
+            // Update display and hidden input
+            quantityDisplay.setAttribute('data-quantity', currentQuantity);
+            quantityDisplay.textContent = currentQuantity;
+            hiddenInput.value = currentQuantity;
+        }
+        
+    </script>
+    
+    
+    </body>
+</html>

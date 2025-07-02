@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #111;
+            color: yellow;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: yellow;
+            text-shadow: 3px 3px 12px rgba(255, 255, 0, 0.6);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(255, 255, 0, 0.3);
+            border: 1px solid #f5c100;
+        }
+
+        .summary {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .summary p {
+            margin: 10px 0;
+        }
+
+        .bill {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 8px;
+            color: #ddd;
+            box-shadow: 0 4px 15px rgba(255, 255, 0, 0.2);
+        }
+
+        .bill h2 {
+            margin-bottom: 15px;
+            font-size: 2rem;
+            color: yellow;
+            text-transform: uppercase;
+        }
+
+        .bill p {
+            font-size: 1.2rem;
+        }
+
+        .bill .product {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .bill .product strong {
+            color: yellow;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            font-size: 1rem;
+            padding: 12px 25px;
+            margin: 15px;
+            color: black;
+            background-color: yellow;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #f5c100;
+            color: black;
+            transform: translateY(-3px);
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            font-size: 1.4rem;
+            color: yellow;
+            margin-top: 50px;
+        }
+
+        .empty-cart-message p {
+            margin-bottom: 20px;
+        }
+
+        .empty-cart-message .btn {
+            margin-top: 20px;
+        }
+
+        .hr-line {
+            border-top: 2px dashed #f5c100;
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Checkout</h1>
+
+    <div class="container">
+        {% if bill_details %}
+            <div class="summary">
+                <p><strong>Total Items:</strong> {{ bill_details|length }}</p>
+                <p><strong>Total Price:</strong> Rs. {{ total_price|floatformat:2 }}</p>
+            </div>
+
+            <!-- Final Bill Section -->
+            <div class="bill">
+                <h2>Final Bill</h2>
+                {% for item in bill_details %}
+                    <div class="product">
+                        <p><strong>{{ item.product_name }}</strong> ({{ item.quantity }} x Rs. {{ item.price|floatformat:2 }}) = Rs. {{ item.total|floatformat:2 }}</p>
+                    </div>
+                {% endfor %}
+                <div class="hr-line"></div>
+                <p><strong>Grand Total: Rs. {{ total_price|floatformat:2 }}</strong></p>
+            </div>
+
+            <!-- Checkout Button -->
+            <div class="btn-container">
+                <a href="{% url 'index' %}" class="btn">Go to Home</a>
+            </div>
+
+        {% else %}
+            <div class="empty-cart-message">
+                <p>Your cart is empty! Start adding items to proceed with checkout.</p>
+                <a href="{% url 'store:product_list' %}" class="btn">Go to Shop</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

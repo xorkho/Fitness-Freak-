@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Fitness Freak</title>
+  <style>
+    /* Global Styling */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+      line-height: 1.6; /* Global line height for better text readability */
+    }
+  
+    /* Section Styling */
+    .about-section {
+      padding: 120px 20px;
+      text-align: center;
+      position: relative;
+      background-image: url('https://png.pngtree.com/background/20230425/original/pngtree-gym-contains-a-group-of-people-picture-image_2479398.jpg') no-repeat center center/cover;
+      color: white;
+      z-index: 1;
+      background-attachment: fixed;
+    }
+  
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+  
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(247, 181, 0, 0.1);
+      padding: 60px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(247, 181, 0, 0.4);
+      position: relative;
+      animation: fadeInUp 1s ease-out;
+    }
+  
+    /* Title Styling */
+    .about-title {
+      font-size: 60px;
+      margin-bottom: 30px;
+      color: #f7b500;
+      text-transform: uppercase;
+      border-bottom: 4px solid #f7b500;
+      display: inline-block;
+      padding-bottom: 10px;
+      letter-spacing: 4px;
+      font-weight: 700;
+      line-height: 1.2;
+      animation: zoomIn 1s ease-out;
+    }
+  
+    .gym-name span {
+      color: #f7b500;
+      font-weight: 600;
+      font-size: 36px;
+      display: block;
+      margin-top: 10px;
+      animation: pulse 2s infinite;
+    }
+  
+    /* Description Styling */
+    .about-description {
+      font-size: 20px;
+      margin: 30px 0;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      text-align: justify;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+      letter-spacing: 1px;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+  
+    /* Features Section */
+    .features-title {
+      font-size: 36px;
+      margin-top: 40px;
+      margin-bottom: 30px;
+      color: #f7b500;
+      animation: fadeInUp 1s ease-in-out;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+  
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 0;
+      color: white;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+  
+    .feature-item {
+      text-align: center;
+      background: rgba(247, 181, 0, 0.3);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(247, 181, 0, 0.5);
+      transition: transform 0.3s ease, background 0.3s ease;
+      position: relative;
+      cursor: pointer;
+      font-weight: 500;
+    }
+  
+    .feature-item:hover {
+      transform: translateY(-10px) scale(1.05);
+      background: rgba(247, 181, 0, 0.4);
+      color: black;
+    }
+  
+    /* Testimonial Section */
+    .testimonial-section {
+      margin-top: 80px;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 50px;
+      border-radius: 15px;
+      animation: fadeInUp 2s ease-in-out;
+    }
+  
+    .testimonial-title {
+      font-size: 35px;
+      margin-bottom: 20px;
+      color: #f7b500;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+  
+    .testimonial-content {
+      font-size: 20px;
+      color: white;
+      line-height: 1.6;
+      text-align: center;
+    }
+  
+    .testimonial-content p {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 400;
+      font-size: 18px;
+    }
+  
+    /* Keyframes for Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+  
+</head>
+<body>
+  <section class="about-section">
+    <div class="container">
+      <h1 class="about-title">About Us</h1>
+      <p class="gym-name">Welcome to <span>Fitness Freak</span>!</p>
+      <p class="about-description">
+        At Fitness Freak, we redefine fitness with a blend of cutting-edge equipment, expert trainers, and a supportive environment. Whether you're a beginner or a fitness enthusiast, we are here to help you every step of the way!
+      </p>
+      <h2 class="features-title">Why Choose Us?</h2>
+      <div class="features-list">
+        <div class="feature-item">
+          <h3>State-of-the-Art Equipment</h3>
+          <p>We provide the latest and most advanced gym equipment for your workouts.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Certified Trainers</h3>
+          <p>Our trainers are experienced and certified to guide you safely and effectively.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Supportive Community</h3>
+          <p>Join a community that motivates and pushes you to reach your fitness goals.</p>
+        </div>
+      </div>
+      <div class="testimonial-section">
+        <h2 class="testimonial-title">What Our Members Say</h2>
+        <div class="testimonial-content">
+          <p>"Fitness Freak has transformed my fitness journey. The trainers are amazing, and the atmosphere is inspiring!" - Sarah K.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule - Fitness Freak</title>
+  <style>
+    /* Global Styling */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      color: #f7b500;
+      text-align: center;
+    }
+
+    section {
+      padding: 50px 20px;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    /* Schedule Section */
+    .schedule-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px auto;
+      background: rgba(247, 181, 0, 0.1);
+      box-shadow: 0 6px 20px rgba(247, 181, 0, 0.3);
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+      border: 1px solid #f7b500;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .schedule-table th {
+      background-color: #f7b500;
+      color: black;
+    }
+
+    .schedule-table tr:nth-child(even) {
+      background: rgba(247, 181, 0, 0.2);
+    }
+
+    /* Fee Structure Section */
+    .fee-section {
+      text-align: center;
+    }
+
+    .fee-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .fee-card {
+      background: rgba(247, 181, 0, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(247, 181, 0, 0.3);
+      width: 280px;
+      text-align: center;
+      transition: transform 0.4s ease, background 0.3s ease;
+    }
+
+    .fee-card:hover {
+      transform: scale(1.1);
+      background: rgba(247, 181, 0, 0.4);
+      color: black;
+    }
+
+    .fee-card h3 {
+      margin-bottom: 15px;
+    }
+
+    /* Services Section */
+    .services-section {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .services-list li {
+      flex: 1 1 calc(45% - 15px);
+      font-size: 18px;
+      margin: 10px;
+      text-align: center;
+      background: rgba(247, 181, 0, 0.2);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(247, 181, 0, 0.3);
+      transition: transform 0.4s ease, background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-list li:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: rgba(247, 181, 0, 0.4);
+      color: black;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Gym Schedule Section -->
+  <section class="schedule-section">
+    <h1>Gym Schedule</h1>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Morning Shift</th>
+          <th>Evening Shift</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monday</td>
+          <td>6:00 AM - 12:00 PM</td>
+          <td>4:00 PM - 10:00 PM</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>6:00 AM - 12:00 PM</td>
+          <td>4:00 PM - 10:00 PM</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>6:00 AM - 12:00 PM</td>
+          <td>4:00 PM - 10:00 PM</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>6:00 AM - 12:00 PM</td>
+          <td>4:00 PM - 10:00 PM</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>6:00 AM - 12:00 PM</td>
+          <td>4:00 PM - 9:00 PM</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>7:00 AM - 1:00 PM</td>
+          <td>5:00 PM - 9:00 PM</td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>Closed</td>
+          <td>Closed</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Fee Structure Section -->
+  <section class="fee-section">
+    <h2>Fee Structure</h2>
+    <div class="fee-cards">
+      <div class="fee-card">
+        <h3>Basic Plan</h3>
+        <p>Access to all gym equipment</p>
+        <p>Price: Rs. 3,000/month</p>
+      </div>
+      <div class="fee-card">
+        <h3>Premium Plan</h3>
+        <p>Includes group classes and personal training</p>
+        <p>Price: Rs. 6,000/month</p>
+      </div>
+      <div class="fee-card">
+        <h3>VIP Plan</h3>
+        <p>Includes diet plan, yoga, and advanced coaching</p>
+        <p>Price: Rs. 10,000/month</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <h2>Our Services</h2>
+    <ul class="services-list">
+      <li>💪 Personal Training Programs</li>
+      <li>🏋️‍♂️ Group Fitness Classes</li>
+      <li>🥗 Nutrition & Diet Planning</li>
+      <li>🏃 High-Intensity Workouts</li>
+      <li>🧘 Yoga & Stress Management</li>
+      <li>🏋️‍♀️ Advanced Gym Equipment</li>
+    </ul>
+  </section>
+</body>
+</html>

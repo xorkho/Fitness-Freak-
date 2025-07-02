@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Fitness Freak Store</title>
+    <style>
+        body {
+            background-color: #000000;  /* Black background */
+            color: #F7F200;  /* Yellow text color */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1E1E1E; /* Dark grey background */
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .store-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .store-message {
+            background-color: #1E1E1E;  /* Dark grey background */
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .store-message p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .store-btn {
+            background-color: #F7F200;
+            color: black;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .store-btn:hover {
+            background-color: #FFCC00;  /* Lighter yellow on hover */
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #1E1E1E;
+            color: #F7F200;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        footer a {
+            color: #F7F200;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Fitness Freak Store</h1>
+    </header>
+    <div class="store-container">
+        <div class="store-message">
+            <p>Browse our collection of high-quality fitness products and gear. Transform your fitness journey today!</p>
+            <a href="{% url 'store:product_list' %}" class="store-btn">View Products</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Fitness Freak Store. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
